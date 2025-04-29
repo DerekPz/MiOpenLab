@@ -11,8 +11,10 @@ const Card = () => {
         navigate("/login");
       } else if (inputValue === '2') {
         navigate("/register");
+      } else if (inputValue === '3') {
+        navigate("/explore");  // Redirige a explorar proyectos
       } else {
-        alert("Please enter 1 to Login or 2 to Register");
+        alert("Please enter 1 to Login, 2 to Register or 3 to Explore Projects");
         setInputValue(""); // Limpia el input si escribió mal
       }
     }
@@ -31,6 +33,7 @@ const Card = () => {
         <p className="text-gray-500">You need to authenticate to continue!</p>
         <p className="text-sky-300">Enter 1 to login</p>
         <p className="text-sky-300">Enter 2 to register</p>
+        <p className="text-sky-300">Enter 3 to explore projects</p> {/* Agregamos la opción 3 */}
       </div>
       
       <div className="input flex pl-4 bg-gray-900 pb-4 rounded-b-lg items-center" id="terminal-input-container">
