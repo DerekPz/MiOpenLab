@@ -2,3 +2,24 @@
 
 
 
+/* Tema claro (por defecto) */
+body {
+    background-color: #1a202c; /* Dark background */
+    color: #f7fafc; /* Light text */
+  }
+  
+  /* Tema oscuro */
+  body.dark {
+    background-color: #f7fafc; /* Light background */
+    color: #1a202c; /* Dark text */
+  }
+  
+  /* Opcionalmente puedes agregar más estilos para los botones y otros elementos */
+  button {
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #555; /* Un cambio al pasar el ratón */
+  }
+  
