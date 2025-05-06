@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
-import { auth } from '../../services/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { auth } from "../../services/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [step, setStep] = useState(1);
-  const [email, setEmail] = useState('');
-  const [inputValue, setInputValue] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  
+  const [email, setEmail] = useState("");
+  const [inputValue, setInputValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
 
   const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       if (step === 1) {
-        if (!inputValue.includes('@')) {
-          setErrorMessage('❌ Please enter a valid email address');
+        if (!inputValue.includes("@")) {
+          setErrorMessage("❌ Please enter a valid email address");
           return;
         }
         setEmail(inputValue);
-        setInputValue('');
+        setInputValue("");
         setStep(2);
-        setErrorMessage('');
+        setErrorMessage("");
       } else if (step === 2) {
         if (inputValue.length < 6) {
-          setErrorMessage('❌ Password must be at least 6 characters');
+          setErrorMessage("❌ Password must be at least 6 characters");
           return;
         }
-        setErrorMessage('');
+        setErrorMessage("");
         handleLogin(inputValue);
       }
     }
@@ -39,19 +39,21 @@ const LoginPage = () => {
       console.log("✅ Logged in successfully");
 
       setTimeout(() => {
-        navigate('/profile');
+        navigate("/profile");
       }, 1500);
     } catch (error: any) {
       console.error(error);
 
-      if (error.code === 'auth/user-not-found') {
-        setErrorMessage('❌ User not found. Please register.');
-      } else if (error.code === 'auth/wrong-password') {
-        setErrorMessage('❌ Wrong password. Please try again.');
-      } else if (error.code === 'auth/invalid-credential') {
-        setErrorMessage('❌ User not found or wrong credentials. Please check.');
-      } else if (error.code === 'auth/invalid-email') {
-        setErrorMessage('❌ Invalid email address.');
+      if (error.code === "auth/user-not-found") {
+        setErrorMessage("❌ User not found. Please register.");
+      } else if (error.code === "auth/wrong-password") {
+        setErrorMessage("❌ Wrong password. Please try again.");
+      } else if (error.code === "auth/invalid-credential") {
+        setErrorMessage(
+          "❌ User not found or wrong credentials. Please check."
+        );
+      } else if (error.code === "auth/invalid-email") {
+        setErrorMessage("❌ Invalid email address.");
       } else {
         setErrorMessage(`❌ ${error.message}`);
       }
@@ -63,8 +65,12 @@ const LoginPage = () => {
       <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg w-full max-w-lg">
         <div className="bg-zinc-700 text-white p-2 flex items-center">
           <span className="text-red-500 text-5xl leading-[0px] -mt-2">•</span>
-          <span className="text-yellow-500 text-5xl leading-[0px] ml-1 -mt-2">•</span>
-          <span className="text-green-500 text-5xl leading-[0px] ml-1 -mt-2">•</span>
+          <span className="text-yellow-500 text-5xl leading-[0px] ml-1 -mt-2">
+            •
+          </span>
+          <span className="text-green-500 text-5xl leading-[0px] ml-1 -mt-2">
+            •
+          </span>
           <span className="ml-4">login --- bash - zsh</span>
         </div>
 
@@ -102,6 +108,12 @@ const LoginPage = () => {
               )}
             </div>
           )}
+          <button
+            onClick={() => navigate(-1)} // Esto regresa una página atrás
+            className="mt-4 self-start text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-1 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-700"
+          >
+            ← Go Back
+          </button>
         </div>
       </div>
     </div>
