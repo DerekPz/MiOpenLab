@@ -29,25 +29,26 @@ const CreateProjectPage = () => {
         setErrorMessage('');
         setStep(2);  // Cambiar al paso 2
       } else if (step === 2) {
+        const trimmedDesc = inputValue.trim();
         if (inputValue.trim().length < 5) {
           setErrorMessage('❌ Description must be at least 5 characters.');
           return;
         }
-        setDescription(inputValue.trim());  // Aquí guardamos la descripción
+        setDescription(trimmedDesc);  // Aquí guardamos la descripción
         setInputValue('');  // Limpiar el input después de guardar la descripción
         setErrorMessage('');
-        await handleCreateProject();  // Llama a la función para crear el proyecto
+        await handleCreateProject(trimmedDesc);  // Llama a la función para crear el proyecto
       }
     }
   };
   
 
 // Función para crear el proyecto en Firestore
-const handleCreateProject = async () => {
+const handleCreateProject = async (desc: string) => {
   console.log("Title:", title);  // Verifica el título
   console.log("Description:", description);  // Verifica la descripción antes de enviarla a Firestore
 
-  if (!description.trim()) {
+  if (!desc.trim()) {
     setErrorMessage('❌ Description cannot be empty.');
     return;  // Si la descripción está vacía, termina la ejecución
   }
@@ -62,7 +63,7 @@ const handleCreateProject = async () => {
     // Asegúrate de que tanto el título como la descripción se estén enviando correctamente
     const docRef = await addDoc(collection(firestore, 'projects'), {
       title,
-      description,  // Asegúrate de que description tenga un valor aquí
+      description: desc,  // Asegúrate de que description tenga un valor aquí
       uid: user.uid,
       author: user.displayName || user.email,
       createdAt: serverTimestamp(),
