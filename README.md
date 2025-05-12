@@ -27,7 +27,8 @@ MiOpenLab es una aplicación web donde los usuarios pueden crear, gestionar y ex
     * Habilita el servicio de *Authentication* (con el método de correo electrónico/contraseña).
     * Habilita el servicio de *Firestore*.
     * Obtén las credenciales de configuración de tu proyecto de Firebase (ve a "Ajustes del proyecto" -> pestaña "General" -> sección "Tus apps"). Deberías ver un objeto de configuración similar a este:
-        javascript
+         ```bash
+        
         const firebaseConfig = {
           apiKey: "TU_API_KEY",
           authDomain: "TU_DOMINIO_DE_AUTENTICACION",
