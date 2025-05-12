@@ -10,16 +10,20 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const isValidEmail = (email: string) => {
+  const emailRegex = /^[a-zA-Z][a-zA-Z0-9._%+-]*@[a-zA-Z]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email);
+};
 
   const [inputValue, setInputValue] = useState("");
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       if (step === 1) {
-        if (!inputValue.includes("@")) {
-          setErrorMessage("❌ Please enter a valid email address");
-          return; // No avanzamos si hay error
-        }
+      if (!isValidEmail(inputValue)) {
+        setErrorMessage("❌ Please enter a valid email address");
+        return; // No avanzamos si hay error
+      }
         setEmail(inputValue);
         setInputValue("");
         setStep(2);
