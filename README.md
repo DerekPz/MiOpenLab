@@ -22,4 +22,76 @@ MiOpenLab es una aplicación web donde los usuarios pueden crear, gestionar y ex
    ```bash
    git clone https://github.com/tu-usuario/MiOpenLab.git
    cd MiOpenLab
+   ```
+2.  **Instala Dependencias**:
+  ```bash
+   npm install
+   ```
+## 📦 ¿Por qué solo `npm install`?
+
+El archivo `package.json` ya incluye todas las dependencias necesarias para que el proyecto funcione correctamente.
+
+3. **Inicia el entorno local**:
+
+   ```bash
+   npm run dev
+   ```
+npm descarga e instala automáticamente:
+
+### 🔧 Dependencias de Producción
+- `react`, `react-dom`, `react-router-dom` – Librerías principales de la app.
+- `firebase` – Conexión a backend y autenticación.
+- `styled-components`, `react-icons`, `react-modal`, `react-confirm-alert` – Componentes visuales y de interacción.
+- `@fortawesome/...` – Íconos visuales.
+
+### 🧪 Dependencias de Desarrollo
+- `vite` – Herramienta de desarrollo y build rápido.
+- `tailwindcss`, `postcss`, `autoprefixer` – Sistema de estilos.
+- `eslint`, `typescript`, `@vitejs/plugin-react` – Control de calidad y soporte para TS + JSX.
+
+Por lo tanto, **no necesitas instalar nada más manualmente**.
+
+
+4. Abre [http://localhost:5173](http://localhost:5173) en tu navegador.
+
+---
+5 **Pagina principal**
+![image](https://github.com/user-attachments/assets/4e5e6471-5ea2-407b-b197-55d997a8bce6)
+6 **pagina despues del login**
+![image](https://github.com/user-attachments/assets/0ffdbfd1-63d5-4e7f-8a57-9f68c49e2a65)
+7 **pagina de Exploracion de proyectos**
+![image](https://github.com/user-attachments/assets/6b72c06b-073d-4dea-9be6-120283b02e7b)
+
+## 🧩 Componentes destacados
+
+- `ProjectCard.tsx` – Muestra información resumida de un proyecto.
+- `EditProjectModal.tsx` – Permite modificar datos de un proyecto.
+- `DeleteProjectModal.tsx` – Confirma la eliminación de un proyecto.
+- `ThemeToggle.tsx` – Cambia entre tema claro y oscuro.
+- `Card.tsx` – Elemento base reutilizable para diseño visual.
+
+---
+
+## 📁 Estructura del Proyecto
+
+```
+MiOpenLab-main/
+├── src/
+│   ├── components/       # Componentes reutilizables
+│   ├── pages/            # Vistas principales de la app
+│   ├── assets/           # Imágenes y recursos estáticos
+│   └── main.tsx          # Punto de entrada
+```
+
+---
+## 📜 Licencia
+
+Este proyecto está bajo la licencia MIT. Siéntete libre de utilizarlo y adaptarlo.
+
+---
+
+Desarrollado con ❤️ para quienes aman crear.
+
+---
+
 
