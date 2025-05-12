@@ -56,11 +56,18 @@ Por lo tanto, **no necesitas instalar nada más manualmente**.
 
 ---
 5 **Pagina principal**
-![image](https://github.com/user-attachments/assets/4e5e6471-5ea2-407b-b197-55d997a8bce6)
+![image](https://github.com/user-attachments/assets/4de8a1fb-c683-45a1-983d-07c404c88974)
+
+---
+
 6 **pagina despues del login**
-![image](https://github.com/user-attachments/assets/0ffdbfd1-63d5-4e7f-8a57-9f68c49e2a65)
+![image](https://github.com/user-attachments/assets/ca0dc0ec-46c0-4534-bc72-dbede3ec2657)
+
+---
+
 7 **pagina de Exploracion de proyectos**
-![image](https://github.com/user-attachments/assets/6b72c06b-073d-4dea-9be6-120283b02e7b)
+![image](https://github.com/user-attachments/assets/08c5c3ee-2a72-4ed6-b86c-6bace0681167)
+
 
 ## 🧩 Componentes destacados
 
