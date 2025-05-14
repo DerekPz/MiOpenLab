@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { firestore } from '../../services/firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import ThemeToggle from '../../components/ThemeToggle';
 
 const ProjectDetailPage = () => {
   const { id } = useParams(); // Obtener el ID del proyecto desde la URL
@@ -34,8 +35,11 @@ const ProjectDetailPage = () => {
   }, [id]);
 
   return (
-    <div className="min-h-screen bg-gray-950 py-12 px-6 font-mono flex items-center justify-center">
-      <div className="max-w-4xl mx-auto bg-black text-white p-6 rounded-lg w-full">
+    <div className="min-h-screen flex flex-col items-center bg-gray-50 dark:bg-gray-900 py-12 px-6 font-mono">
+      <div className="w-full flex justify-end pt-6 pr-6">
+        <ThemeToggle />
+      </div>
+      <div className="max-w-4xl mx-auto bg-pink-200 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6 rounded-lg w-full">
         {errorMessage && <p className="text-red-500">{errorMessage}</p>}
 
         {project ? (
@@ -49,9 +53,9 @@ const ProjectDetailPage = () => {
               <p className="text-sm">bash</p>
             </div>
 
-            <h1 className="text-green-400 text-3xl font-bold mb-4">{project.title}</h1>
-            <p className="text-gray-400 mb-4">{project.description}</p> {/* Descripción extendida */}
-            <p className="text-green-400 ">By: {project.author || 'No author specified'}</p>
+            <h1 className="text-yellow-500 dark:text-green-400 text-3xl font-bold mb-4">{project.title}</h1>
+            <p className="text-gray-900 dark:text-gray-400 mb-4">{project.description}</p>
+            <p className="text-yellow-500 dark:text-green-400 ">By: {project.author || 'No author specified'}</p>
 
             <div className="mt-6">
               <button

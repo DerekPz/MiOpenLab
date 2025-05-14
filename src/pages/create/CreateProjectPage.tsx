@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { auth, firestore } from '../../services/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
- 
+import ThemeToggle from '../../components/ThemeToggle';
 
 const CreateProjectPage = () => {
   const [step, setStep] = useState(1);
@@ -93,16 +93,19 @@ const handleCreateProject = async (desc: string) => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-950 font-mono">
-      <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg w-full max-w-lg">
-        <div className="bg-zinc-700 text-white p-2 flex items-center">
+    <div className="min-h-screen flex flex-col items-center bg-gray-50 dark:bg-gray-900 font-mono">
+      <div className="w-full flex justify-end pt-6 pr-6">
+        <ThemeToggle />
+      </div>
+      <div className="bg-pink-200 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg w-full max-w-lg">
+        <div className="bg-zinc-700 text-yellow-500 dark:text-white p-2 flex items-center">
           <span className="text-red-500 text-5xl leading-[0px] -mt-2">•</span>
           <span className="text-yellow-500 text-5xl leading-[0px] ml-1 -mt-2">•</span>
           <span className="text-green-500 text-5xl leading-[0px] ml-1 -mt-2">•</span>
           <span className="ml-4">create-project --- bash - zsh</span>
         </div>
 
-        <div className="p-6 text-sky-300 flex flex-col gap-4">
+        <div className="p-6 text-gray-900 dark:text-sky-300 flex flex-col gap-4">
           {step === 1 && (
             <div>
               <p>➝ Enter Project Title:</p>
@@ -114,7 +117,7 @@ const handleCreateProject = async (desc: string) => {
   className="bg-transparent border-b border-gray-500 focus:outline-none focus:border-sky-400 text-amber-400 w-full mt-2"
 />
               {errorMessage && (
-                <div className="text-red-400 text-sm mt-2">{errorMessage}</div>
+                <div className="text-yellow-500 dark:text-red-400 text-sm mt-2">{errorMessage}</div>
               )}
             </div>
           )}
@@ -131,14 +134,14 @@ const handleCreateProject = async (desc: string) => {
                 autoFocus
               />
               {errorMessage && (
-                <div className="text-red-400 text-sm mt-2">{errorMessage}</div>
+                <div className="text-yellow-500 dark:text-red-400 text-sm mt-2">{errorMessage}</div>
               )}
             </div>
           )}
 
           {step === 3 && (
             <div>
-              <p>{successMessage}</p>
+              <p className="text-yellow-500 dark:text-green-400 text-center mt-6">{successMessage}</p>
               <div className="flex gap-4 mt-4">
                 <button
                   onClick={handleNavigateToProfile}

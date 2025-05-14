@@ -43,7 +43,7 @@ const ExploreProjectsPage = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-6 font-mono">
       <div className="flex justify-between items-center mb-8">
-        <div className="text-gray-900 dark:text-gray-100 text-3xl">Explore Projects</div>
+        <div className="text-gray-900 dark:text-gray-100 text-3xl font-mono mb-8">Explore Projects</div>
 
         {/* Login/Register or Go to Profile Button */}
         {!isUserLoggedIn && (
@@ -83,7 +83,7 @@ const ExploreProjectsPage = () => {
         {projects.map((project) => (
           <div
             key={project.id}
-            className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-6 rounded-lg w-full max-w-lg font-mono transition-transform transform hover:scale-105 hover:shadow-xl"
+            className="bg-pink-200 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6 rounded-lg w-full max-w-lg font-mono transition-transform transform hover:scale-105 hover:shadow-xl"
             onClick={() => navigate(`/project/${project.id}`)}
           >
             <div className="flex justify-between items-center">
@@ -95,13 +95,13 @@ const ExploreProjectsPage = () => {
               <p className="text-sm">bash</p>
             </div>
             <div className="mt-4">
-              <p className="text-green-400">{project.title}</p>
-              <p className="text-gray-900 dark:text-gray-100">
+              <p className="text-yellow-500 dark:text-green-400">{project.title}</p>
+              <p className="text-gray-900 dark:text-white">
                 {project.description && project.description.length > 50
                   ? project.description.substring(0, 50) + '...'
                   : project.description || 'No description available'}
               </p>
-              <p className="text-green-400 mt-2">
+              <p className="text-yellow-500 dark:text-green-400 mt-2">
                 {project.author ? `By: ${project.author}` : 'No author specified'}
               </p>
             </div>

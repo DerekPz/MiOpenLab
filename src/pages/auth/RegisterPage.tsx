@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { auth } from "../../services/firebase"; // Asegúrate que la ruta es correcta
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import ThemeToggle from '../../components/ThemeToggle';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -66,9 +67,12 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-950 font-mono">
-      <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg w-full max-w-lg">
-        <div className="bg-zinc-700 text-white p-2 flex items-center">
+    <div className="min-h-screen flex flex-col items-center bg-gray-50 dark:bg-gray-900 font-mono">
+      <div className="w-full flex justify-end pt-6 pr-6">
+        <ThemeToggle />
+      </div>
+      <div className="bg-pink-200 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg w-full max-w-lg">
+        <div className="bg-zinc-700 text-yellow-500 dark:text-white p-2 flex items-center">
           <span className="text-red-500 text-5xl leading-[0px] -mt-2">•</span>
           <span className="text-yellow-500 text-5xl leading-[0px] ml-1 -mt-2">
             •
@@ -79,7 +83,7 @@ const RegisterPage = () => {
           <span className="ml-4">register --- bash - zsh</span>
         </div>
 
-        <div className="p-6 text-sky-300 flex flex-col gap-4">
+        <div className="p-6 text-gray-900 dark:text-sky-300 flex flex-col gap-4">
           {step === 1 && (
             <div>
               <p>➝ Enter your Email:</p>
@@ -91,11 +95,11 @@ const RegisterPage = () => {
                 className="bg-transparent border-b border-gray-500 focus:outline-none focus:border-sky-400 text-amber-400 w-full mt-2"
                 autoFocus
               />
-              {errorMessage && ( // 👈 AQUI
-                <div className="text-red-400 text-sm mt-2">{errorMessage}</div>
+              {errorMessage && (
+                <div className="text-yellow-500 dark:text-red-400 text-sm mt-2">{errorMessage}</div>
               )}
               <button
-                onClick={() => navigate(-1)} // Esto regresa una página atrás
+                onClick={() => navigate(-1)}
                 className="mt-4 self-start text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-1 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-700"
               >
                 ← Go Back
@@ -114,11 +118,11 @@ const RegisterPage = () => {
                 className="bg-transparent border-b border-gray-500 focus:outline-none focus:border-sky-400 text-amber-400 w-full mt-2"
                 autoFocus
               />
-              {errorMessage && ( // MOSTRAR ERROR AQUÍ
-                <div className="text-red-400 text-sm mt-2">{errorMessage}</div>
+              {errorMessage && (
+                <div className="text-yellow-500 dark:text-red-400 text-sm mt-2">{errorMessage}</div>
               )}
               <button
-                onClick={() => setStep(step - 1)} // Esto regresa una página atrás
+                onClick={() => setStep(step - 1)}
                 className="mt-4 self-start text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-1 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-700"
               >
                 ← Go Back
@@ -137,11 +141,11 @@ const RegisterPage = () => {
                 className="bg-transparent border-b border-gray-500 focus:outline-none focus:border-sky-400 text-amber-400 w-full mt-2"
                 autoFocus
               />
-              {errorMessage && ( // 👈 Mostrar errores aquí
-                <div className="text-red-400 text-sm mt-2">{errorMessage}</div>
+              {errorMessage && (
+                <div className="text-yellow-500 dark:text-red-400 text-sm mt-2">{errorMessage}</div>
               )}
               <button
-                onClick={() => setStep(step - 1)} // Esto regresa una página atrás
+                onClick={() => setStep(step - 1)}
                 className="mt-4 self-start text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-1 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-700"
               >
                 ← Go Back
@@ -150,7 +154,7 @@ const RegisterPage = () => {
           )}
 
           {step === 4 && (
-            <div className="text-green-400 text-center mt-6">
+            <div className="text-yellow-500 dark:text-green-400 text-center mt-6">
               ✅ Registration completed successfully!
             </div>
           )}
