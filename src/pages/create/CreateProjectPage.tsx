@@ -8,7 +8,7 @@ const CreateProjectPage = () => {
   const [step, setStep] = useState(1);
   const [inputValue, setInputValue] = useState('');
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');  
+  const [description, setDescription] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const CreateProjectPage = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);  // Actualiza el valor del input
   };
-  
+
   const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       if (step === 1) {
@@ -41,42 +41,42 @@ const CreateProjectPage = () => {
       }
     }
   };
-  
 
-// Función para crear el proyecto en Firestore
-const handleCreateProject = async (desc: string) => {
-  console.log("Title:", title);  // Verifica el título
-  console.log("Description:", description);  // Verifica la descripción antes de enviarla a Firestore
 
-  if (!desc.trim()) {
-    setErrorMessage('❌ Description cannot be empty.');
-    return;  // Si la descripción está vacía, termina la ejecución
-  }
+  // Función para crear el proyecto en Firestore
+  const handleCreateProject = async (desc: string) => {
+    console.log("Title:", title);  // Verifica el título
+    console.log("Description:", description);  // Verifica la descripción antes de enviarla a Firestore
 
-  const user = auth.currentUser;
-  if (!user) {
-    setErrorMessage('❌ No authenticated user.');
-    return;
-  }
+    if (!desc.trim()) {
+      setErrorMessage('❌ Description cannot be empty.');
+      return;  // Si la descripción está vacía, termina la ejecución
+    }
 
-  try {
-    // Asegúrate de que tanto el título como la descripción se estén enviando correctamente
-    const docRef = await addDoc(collection(firestore, 'projects'), {
-      title,
-      description: desc,  // Asegúrate de que description tenga un valor aquí
-      uid: user.uid,
-      author: user.displayName || user.email,
-      createdAt: serverTimestamp(),
-    });
+    const user = auth.currentUser;
+    if (!user) {
+      setErrorMessage('❌ No authenticated user.');
+      return;
+    }
 
-    setSuccessMessage('✅ Project created successfully!');
-    setStep(3);  // Cambia al paso 3 (finalizar)
-    console.log("Document written with ID: ", docRef.id);  // Verifica el ID del documento
-  } catch (error) {
-    setErrorMessage('❌ Failed to create project');
-    console.error(error);
-  }
-};
+    try {
+      // Asegúrate de que tanto el título como la descripción se estén enviando correctamente
+      const docRef = await addDoc(collection(firestore, 'projects'), {
+        title,
+        description: desc,  // Asegúrate de que description tenga un valor aquí
+        uid: user.uid,
+        author: user.displayName || user.email,
+        createdAt: serverTimestamp(),
+      });
+
+      setSuccessMessage('✅ Project created successfully!');
+      setStep(3);  // Cambia al paso 3 (finalizar)
+      console.log("Document written with ID: ", docRef.id);  // Verifica el ID del documento
+    } catch (error) {
+      setErrorMessage('❌ Failed to create project');
+      console.error(error);
+    }
+  };
 
 
   const handleNavigateToProfile = () => {
@@ -97,7 +97,7 @@ const handleCreateProject = async (desc: string) => {
       <div className="w-full flex justify-end pt-6 pr-6">
         <ThemeToggle />
       </div>
-      <div className="bg-pink-200 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg w-full max-w-lg">
+      <div className="bg-gray-200 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg w-full max-w-lg">
         <div className="bg-zinc-700 text-yellow-500 dark:text-white p-2 flex items-center">
           <span className="text-red-500 text-5xl leading-[0px] -mt-2">•</span>
           <span className="text-yellow-500 text-5xl leading-[0px] ml-1 -mt-2">•</span>
@@ -110,12 +110,12 @@ const handleCreateProject = async (desc: string) => {
             <div>
               <p>➝ Enter Project Title:</p>
               <input
-  type="text"
-  value={inputValue}
-  onChange={handleInputChange}  // Actualiza el estado mientras el usuario escribe
-  onKeyDown={handleKeyDown}  // Solo captura el "Enter" para avanzar al siguiente paso
-  className="bg-transparent border-b border-gray-500 focus:outline-none focus:border-sky-400 text-amber-400 w-full mt-2"
-/>
+                type="text"
+                value={inputValue}
+                onChange={handleInputChange}  // Actualiza el estado mientras el usuario escribe
+                onKeyDown={handleKeyDown}  // Solo captura el "Enter" para avanzar al siguiente paso
+                className="bg-transparent border-b border-gray-500 focus:outline-none focus:border-sky-400 text-amber-400 w-full mt-2"
+              />
               {errorMessage && (
                 <div className="text-yellow-500 dark:text-red-400 text-sm mt-2">{errorMessage}</div>
               )}
@@ -157,7 +157,14 @@ const handleCreateProject = async (desc: string) => {
                 </button>
               </div>
             </div>
+
           )}
+          <button
+            onClick={() => navigate(-1)} // Esto regresa una página atrás
+            className="mt-4 self-start text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-1 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-700"
+          >
+            ← Go Back
+          </button>
         </div>
       </div>
     </div>

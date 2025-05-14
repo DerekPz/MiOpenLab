@@ -127,7 +127,7 @@ const ProfilePage = () => {
               {projects.map((project) => (
                 <div
                   key={project.id}
-                  className="bg-pink-200 dark:bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition border border-gray-200 dark:border-gray-700 relative"
+                  className="bg-gray-200 dark:bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition border border-gray-200 dark:border-gray-700 relative"
                 >
                   <h3 className="text-xl font-bold text-yellow-500 dark:text-white mb-2">{project.title}</h3>
                   <p className="text-gray-900 dark:text-gray-400">

@@ -22,8 +22,8 @@ const Card = () => {
   };
 
   return (
-    <div className="terminal p-5 rounded-lg font-mono min-w-[480px]">
-      <div className="terminal-header bg-zinc-700 text-white p-2 rounded-t-lg flex items-center">
+    <div className="terminal p-5 rounded-lg font-mono min-w-[480px] ">
+      <div className="terminal-header bg-zinc-700 text-white p-2 rounded-t-lg flex items-center ">
         <span className="text-red-500 text-5xl leading-[0px] align-middle -mt-2">
           •
         </span>
@@ -39,24 +39,24 @@ const Card = () => {
       </div>
 
       <div
-        className="pl-4 pt-2 bg-gray-900 max-h-[500px] overflow-auto"
+        className="pl-4 pt-2 max-h-[500px] overflow-auto bg-gray-200 dark:bg-gray-800"
         id="output"
       >
         <p className="text-gray-500">You need to authenticate to continue!</p>
-        <p className="text-sky-300">Enter 1 to login</p>
-        <p className="text-sky-300">Enter 2 to register</p>
-        <p className="text-sky-300">Enter 3 to explore projects</p>{" "}
+        <p className="text-blue-500">Enter 1 to login</p>
+        <p className="text-blue-500">Enter 2 to register</p>
+        <p className="text-blue-500">Enter 3 to explore projects</p>{" "}
         {/* Agregamos la opción 3 */}
       </div>
 
       <div
-        className="input flex pl-4 bg-gray-900 pb-4 rounded-b-lg items-start gap-2"
+        className="input flex pl-4 pb-4 rounded-b-lg items-start gap-2 bg-gray-200 dark:bg-gray-800"
         id="terminal-input-container"
       >
-        <span className="text-green-500 mt-1">➝</span>
-        <span className="text-sky-300 mt-1">~</span>
-
-        <div className="flex flex-col grow">
+        <span className="text-green-700 mt-1 dark:bg-gray-800 ">➝</span>
+        <span className="text-green-700 mt-1 dark:bg-gray-800">~</span>
+    
+        <div className="flex flex-col grow dark:bg-gray-800">
           <input
             type="text"
             value={inputValue}

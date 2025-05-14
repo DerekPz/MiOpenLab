@@ -71,7 +71,7 @@ const RegisterPage = () => {
       <div className="w-full flex justify-end pt-6 pr-6">
         <ThemeToggle />
       </div>
-      <div className="bg-pink-200 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg w-full max-w-lg">
+      <div className="bg-gray-200 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg w-full max-w-lg">
         <div className="bg-zinc-700 text-yellow-500 dark:text-white p-2 flex items-center">
           <span className="text-red-500 text-5xl leading-[0px] -mt-2">•</span>
           <span className="text-yellow-500 text-5xl leading-[0px] ml-1 -mt-2">
