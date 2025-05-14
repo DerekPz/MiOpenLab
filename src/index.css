@@ -1,6 +1,20 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Estilos base */
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+  }
+}
 
+/* Transiciones suaves para el cambio de tema */
+@layer utilities {
+  .theme-transition {
+    @apply transition-colors duration-200;
+  }
+}
 
 /* Tema claro (por defecto) */
 body {

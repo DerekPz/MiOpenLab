@@ -41,9 +41,9 @@ const ExploreProjectsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 py-12 px-6 font-mono">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-6 font-mono">
       <div className="flex justify-between items-center mb-8">
-        <div className="text-white text-3xl">Explore Projects</div>
+        <div className="text-gray-900 dark:text-gray-100 text-3xl">Explore Projects</div>
 
         {/* Login/Register or Go to Profile Button */}
         {!isUserLoggedIn && (
@@ -83,7 +83,7 @@ const ExploreProjectsPage = () => {
         {projects.map((project) => (
           <div
             key={project.id}
-            className="bg-black text-white p-6 rounded-lg w-full max-w-lg font-mono transition-transform transform hover:scale-105 hover:shadow-xl"
+            className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-6 rounded-lg w-full max-w-lg font-mono transition-transform transform hover:scale-105 hover:shadow-xl"
             onClick={() => navigate(`/project/${project.id}`)}
           >
             <div className="flex justify-between items-center">
@@ -96,7 +96,7 @@ const ExploreProjectsPage = () => {
             </div>
             <div className="mt-4">
               <p className="text-green-400">{project.title}</p>
-              <p className="text-white">
+              <p className="text-gray-900 dark:text-gray-100">
                 {project.description && project.description.length > 50
                   ? project.description.substring(0, 50) + '...'
                   : project.description || 'No description available'}

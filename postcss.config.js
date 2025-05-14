@@ -1,4 +1,4 @@
-import tailwindcss from "@tailwindcss/postcss";
+import tailwindcss from "tailwindcss";
 
 /** @type {import('postcss').Config} */
 export default {

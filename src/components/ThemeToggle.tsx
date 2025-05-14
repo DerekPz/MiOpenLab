@@ -3,39 +3,33 @@ import { useState, useEffect } from 'react';
 const ThemeToggle = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
-  // Revisa el estado guardado en localStorage al montar el componente
   useEffect(() => {
     const savedMode = localStorage.getItem('theme');
     if (savedMode) {
       setIsDarkMode(savedMode === 'dark');
+      document.documentElement.classList.toggle('dark', savedMode === 'dark');
     } else {
-      // Si no hay valor en localStorage, usa el modo del sistema
-      setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDarkMode(prefersDark);
+      document.documentElement.classList.toggle('dark', prefersDark);
     }
   }, []);
 
-  // Cambia el tema y guarda la preferencia en localStorage
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('dark'); // Agrega la clase 'dark' al body
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.body.classList.remove('dark'); // Elimina la clase 'dark'
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', !isDarkMode ? 'dark' : 'light');
+  };
 
   return (
     <button
-      onClick={() => setIsDarkMode(!isDarkMode)}
-      className="bg-gray-800 text-white p-2 rounded-lg"
+      onClick={toggleTheme}
+      className="theme-transition px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+      aria-label={isDarkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
     >
-      {isDarkMode ? '🌞 Light Mode' : '🌙 Dark Mode'}
-      
+      {isDarkMode ? '🌞' : '🌙'}
     </button>
-    
   );
-  
 };
 
 export default ThemeToggle;
